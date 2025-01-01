@@ -1,0 +1,72 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+}
+
+.product-card {
+  @apply bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.product-image-container {
+  @apply relative overflow-hidden aspect-square;
+}
+
+.product-image {
+  @apply w-full h-full object-cover transition-transform duration-300;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-info {
+  @apply p-4 space-y-2;
+}
+
+.product-name {
+  @apply text-lg font-semibold text-gray-800 transition-colors duration-200;
+}
+
+.product-card:hover .product-name {
+  @apply text-black;
+}
+
+.product-price {
+  @apply text-xl font-bold text-black;
+}
+
+.product-description {
+  @apply text-sm text-gray-600 line-clamp-2;
+}
+
+.quantity-control {
+  @apply flex items-center space-x-2 bg-gray-100 rounded-lg p-2 transition-all duration-300;
+}
+
+.quantity-control button {
+  @apply w-8 h-8 flex items-center justify-center rounded-md bg-white text-black hover:bg-primary hover:text-white transition-colors duration-200;
+}
+
+.add-to-cart-btn {
+  @apply w-full mt-4 bg-primary text-white py-2 rounded-lg font-medium hover:bg-primary-hover transform transition-all duration-300;
+}
+
+.add-to-cart-btn:hover {
+  @apply -translate-y-0.5 shadow-md;
+}
+
+.discount-badge {
+  @apply absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-md text-sm font-medium transform rotate-3;
+}

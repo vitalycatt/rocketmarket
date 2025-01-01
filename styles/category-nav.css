@@ -1,0 +1,48 @@
+@keyframes slideInDown {
+  from {
+    transform: translate3d(0, -10%, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(0, -10%, 0);
+    opacity: 0;
+  }
+}
+
+.categories-nav-enter {
+  animation: slideInDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.categories-nav-exit {
+  animation: slideOutUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.categories-content-enter {
+  animation: fadeScale 0.4s ease-out 0.1s both;
+}
+
+@keyframes fadeScale {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

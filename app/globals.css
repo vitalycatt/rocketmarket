@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #6b728033;
+  --primary-hover: #FF5252;
+  --secondary: #4ECDC4;
+  --accent: #FFE66D;
+  --background: #F7F7F7;
+  --popover: #F7F7F7;
+  --text: #2D3436;
+  --text-secondary: #000000;
+  --border: #DFE6E9;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--background)] text-[var(--text)];
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+  @keyframes glow {
+    from {
+      filter: drop-shadow(0 0 10px rgba(78, 205, 196, 0.8))
+             drop-shadow(0 0 20px rgba(78, 205, 196, 0.6))
+             drop-shadow(0 0 30px rgba(78, 205, 196, 0.4));
+    }
+    to {
+      filter: drop-shadow(0 0 20px rgba(78, 205, 196, 0.6))
+             drop-shadow(0 0 30px rgba(78, 205, 196, 0.4))
+             drop-shadow(0 0 40px rgba(78, 205, 196, 0.2));
+    }
+  }
+
+  @keyframes particle {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(var(--tx), var(--ty)) scale(0);
+      opacity: 0;
+    }
+  }
+
+  @keyframes smoke {
+    0% {
+      transform: scale(1) translate(0, 0);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.5;
+    }
+    40% {
+      opacity: 0.4;
+    }
+    60% {
+      opacity: 0.2;
+    }
+    80% {
+      opacity: 0.1;
+    }
+    100% {
+      transform: scale(3) translate(var(--tx), var(--ty));
+      opacity: 0;
+    }
+  }
+
+  @keyframes smoke-dissipate {
+    0% {
+      opacity: 0;
+      transform: scale(1) translate(0, 0);
+    }
+    20% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(3) translate(var(--tx, 0), var(--ty, -100px));
+    }
+  }
+
+  @keyframes twinkle {
+    0% {
+      opacity: var(--base-opacity, 0.3);
+      transform: scale(1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  /* Rocket Animation */
+  @keyframes bounce {
+    0% {
+      transform: translate3d(0px, 0px, 0);
+    }
+    50% {
+      transform: translate3d(0px, -4px, 0);
+    }
+    100% {
+      transform: translate3d(0px, 0px, 0);
+    }
+  }
+
+  @keyframes exhaust {
+    0% {
+      background: linear-gradient(to bottom, transparent 10%, white 100%);
+    }
+    50% {
+      background: linear-gradient(to bottom, transparent 8%, white 100%);
+    }
+    75% {
+      background: linear-gradient(to bottom, transparent 12%, white 100%);
+    }
+  }
+
+  @keyframes fumes {
+    50% {
+      transform: scale(1.5);
+      background-color: transparent;
+    }
+    51% {
+      transform: scale(0.8);
+    }
+    100% {
+      background-color: white;
+      transform: scale(1)
+    }
+  }
+
+  @keyframes fumes2 {
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes rocket-movement {
+    0% {
+      transform: translateY(100vh);
+    }
+    100% {
+      transform: translateY(-100vh);
+    }
+  }
+
+  @keyframes twinkle {
+    80% {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes launch {
+    0% {
+      transform: translateY(0);
+    }
+    10% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-120vh);
+    }
+  }
+
+  @keyframes smoke-puff {
+    0% {
+      transform: scale(0.3) translate(0, 0);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(4) translate(var(--tx, 0), var(--ty, -100px));
+      opacity: 0;
+    }
+  }
+
+  @keyframes text-reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-float {
+    animation: float 15s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-slide {
+    animation: slide 20s linear infinite;
+    background-size: 200% 200%;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-particle {
+    animation: particle 2s ease-out infinite;
+  }
+
+  .animate-smoke {
+    animation: smoke-dissipate 2s ease-out forwards;
+  }
+
+  .animate-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  .bg-gradient-radial {
+    background-image: radial-gradient(var(--tw-gradient-stops));
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(78, 205, 196, 0.5),
+                 0 0 20px rgba(78, 205, 196, 0.3),
+                 0 0 30px rgba(78, 205, 196, 0.2);
+  }
+
+  .smoke-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .smoke-particle {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  @keyframes smoke-large {
+    0% {
+      transform: translate(0, 0) scale(0.3);
+      opacity: 0.95;
+    }
+    100% {
+      transform: translate(var(--tx), -1200px) scale(8);
+      opacity: 0;
+    }
+  }
+
+  @keyframes smoke-medium {
+    0% {
+      transform: translate(0, 0) scale(0.2);
+      opacity: 0.9;
+    }
+    100% {
+      transform: translate(var(--tx), -1000px) scale(6);
+      opacity: 0;
+    }
+  }
+
+  @keyframes smoke-small {
+    0% {
+      transform: translate(0, 0) scale(0.1);
+      opacity: 0.85;
+    }
+    100% {
+      transform: translate(var(--tx), -800px) scale(4);
+      opacity: 0;
+    }
+  }
+
+  .smoke-large {
+    filter: blur(12px);
+    animation: smoke-large 5s forwards;
+  }
+
+  .smoke-medium {
+    filter: blur(10px);
+    animation: smoke-medium 4s forwards;
+  }
+
+  .smoke-small {
+    filter: blur(8px);
+    animation: smoke-small 3s forwards;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 mx-auto max-w-7xl sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300;
+  }
+
+  .heading-1 {
+    @apply text-4xl font-bold tracking-tight;
+  }
+
+  .heading-2 {
+    @apply text-2xl font-semibold;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+}
